@@ -1,0 +1,13 @@
+.popup__container_type_delete-card {
+    width: 430px;
+    min-height: 181px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 880px) {
+    .popup__container_type_delete-card {
+        width: 282px;
+    }
+}

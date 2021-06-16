@@ -1,0 +1,9 @@
+.popup__container_type_add-card {
+    width: 430px;
+}
+
+@media screen and (max-width: 880px) {
+    .popup__container_type_add-card {
+        width: 282px;
+    }
+}

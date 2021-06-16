@@ -1,0 +1,10 @@
+.popup__form-paragraph {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    text-align: center;
+    transition: opacity .3s ease;
+}

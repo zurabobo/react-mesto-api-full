@@ -1,0 +1,7 @@
+.popup__container_type_full-image {
+    background: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+    top: 18px;
+}

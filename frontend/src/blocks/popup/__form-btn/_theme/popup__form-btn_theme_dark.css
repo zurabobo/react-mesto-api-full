@@ -1,0 +1,17 @@
+.popup__form-btn_theme_dark {
+    background: #FFFFFF;
+    color: #000000;
+    transition: opacity .3s ease;
+    margin-top: 216px;
+    margin-bottom: 0;
+}
+
+.popup__form-btn_theme_dark:hover {
+    opacity: .8;
+}
+
+@media screen and (max-width: 768px) {
+    .form__save-button_theme_dark {
+        margin-top: 173px;
+    }
+}

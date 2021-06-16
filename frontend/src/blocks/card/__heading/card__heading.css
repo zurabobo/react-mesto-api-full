@@ -1,0 +1,13 @@
+.card__heading {
+    font-family: Inter;
+    font-style: normal;
+    max-width: 214px;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+    margin: 25px 0 25px 21px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

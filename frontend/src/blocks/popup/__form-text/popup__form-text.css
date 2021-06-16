@@ -1,0 +1,23 @@
+.popup__form-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    margin: 17px 0 0;
+    padding: 13px 5px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    background-color: transparent;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+
+.popup__form-text:focus {
+    outline-color: #2B7CFF;
+}
+
+@media screen and (max-width: 880px) {
+    .popup__form-text {
+        margin: 24px 0 0;
+    }
+}
