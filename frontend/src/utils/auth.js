@@ -44,14 +44,8 @@ class Auth {
     }
 }
 
-// const auth = new Auth({
-//     baseUrl: 'https://auth.nomoreparties.co',
-//     headers: {
-//         'Content-Type': 'application/json'
-//     }
-// })
 const auth = new Auth({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://api.zb.students.nomoredomains.club',
     headers: {
         'Content-Type': 'application/json'
     }
