@@ -16,12 +16,7 @@ import Register from './Register';
 import Login from './Login';
 import InfoTooltip from './InfoTooltip';
 
-import { Circle, Default, Spinner} from 'react-spinners-css';
-import './spinner.css';
-import './spinner__container.css'
-
-
-
+import { Spinner } from 'react-spinners-css';
 
 function App() {
 

@@ -23,8 +23,8 @@ const app = express();
 const options = {
   origin: [
     'http://localhost:8080',
-    'https://ВАШ ДОМЕЙН С ДОКУМЕНТА',
-    'https://YOUR.github.io',
+    'https://zb.students.nomoredomains.club',
+    'https://api.zb.students.nomoredomains.club',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
