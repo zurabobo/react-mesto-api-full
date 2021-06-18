@@ -22,7 +22,7 @@ const app = express();
 
 const options = {
   origin: [
-    'http://localhost:8080',
+    'http://localhost:3001',
     'https://zb.students.nomoredomains.club',
     'https://api.zb.students.nomoredomains.club',
   ],
