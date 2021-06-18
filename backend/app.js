@@ -23,7 +23,7 @@ const options = {
   origin: [
     'http://localhost:3001',
     'https://zb.students.nomoredomains.club',
-    //'https://api.zb.students.nomoredomains.club',
+    'https://api.zb.students.nomoredomains.club',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
@@ -33,6 +33,13 @@ const options = {
 };
 
 app.use('*', cors(options));
+
+app.use((req, res, next) => {  
+      res.header('Access-Control-Allow-Origin', "*");
+      res.header("Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE")
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
+ });
 
 // const allowedCors = [
 // 'https://zb.students.nomoredomains.club',
