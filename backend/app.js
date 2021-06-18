@@ -37,12 +37,32 @@ const app = express();
 const allowedCors = [
   'https://zb.students.nomoredomains.club',
   'https://api.zb.students.nomoredomains.club',
-  'http://localhost:3001',
+  'http://localhost:3000',
 ];
 
-app.use(cors({
-  origin: allowedCors,
-}));
+app.use(cors());
+
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+
+  next();
+});
+
+app.options('*', cors());
+
+// const allowedCors = [
+//   'https://zb.students.nomoredomains.club',
+//   'https://api.zb.students.nomoredomains.club',
+//   'http://localhost:3001',
+// ];
+
+// app.use(cors({
+//   origin: allowedCors,
+// }));
 
 const { PORT = 3000 } = process.env;
 
