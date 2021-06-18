@@ -6,14 +6,14 @@ class Api {
 
 
     getUserInfo() {
-        return fetch(`${this._baseUrl}/users/me`, {
+        return fetch(`${this._baseUrl}users/me`, {
                 headers: this._headers
             })
             .then(this._getResData);
     }
 
     setUserInfo(data) {
-        return fetch(`${this._baseUrl}/users/me`, {
+        return fetch(`${this._baseUrl}users/me`, {
                 method: 'PATCH',
                 headers: this._headers,
                 body: JSON.stringify({
@@ -25,14 +25,14 @@ class Api {
     }
 
     getInitialCards() {
-        return fetch(`${this._baseUrl}/cards`, {
+        return fetch(`${this._baseUrl}cards`, {
                 headers: this._headers,
             })
             .then(this._getResData);
     }
 
     addCard(newCard) {
-        return fetch(`${this._baseUrl}/cards`, {
+        return fetch(`${this._baseUrl}cards`, {
                 method: 'POST',
                 headers: this._headers,
                 body: JSON.stringify({
@@ -44,7 +44,7 @@ class Api {
     }
 
     deleteCard(id) {
-        return fetch(`${this._baseUrl}/cards/${id}`, {
+        return fetch(`${this._baseUrl}cards/${id}`, {
                 method: 'DELETE',
                 headers: this._headers,
             })
@@ -60,7 +60,7 @@ class Api {
       }
 
     likeCard(id) {
-        return fetch(`${this._baseUrl}/cards/likes/${id}`, {
+        return fetch(`${this._baseUrl}cards/likes/${id}`, {
                 method: 'PUT',
                 headers: this._headers,
             })
@@ -68,7 +68,7 @@ class Api {
     }
 
     dislikeCard(id) {
-        return fetch(`${this._baseUrl}/cards/likes/${id}`, {
+        return fetch(`${this._baseUrl}cards/likes/${id}`, {
                 method: 'DELETE',
                 headers: this._headers,
             })
@@ -76,7 +76,7 @@ class Api {
     }
 
     setAvatar(data) {
-        return fetch(`${this._baseUrl}/users/me/avatar`, {
+        return fetch(`${this._baseUrl}users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify( {avatar: data.avatar} ),
@@ -99,7 +99,7 @@ class Api {
 }
 
 const api = new Api({
-    baseUrl: 'https://api.zb.students.nomoredomains.club',
+    baseUrl: 'https://api.zb.students.nomoredomains.club/',
     headers: {
       authorization: '9da2e5f7-acdb-422d-9138-e514aeb3e40e',
       'Content-Type': 'application/json'
