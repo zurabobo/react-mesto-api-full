@@ -29,7 +29,7 @@ class Api {
     getInitialCards(token) {
         return fetch(`${this._baseUrl}/cards`, {
                 headers: this._headers,
-                authorization: `Bearer ${token}`
+                Authorization: `Bearer ${token}`
             })
             .then(this._getResData);
     }
@@ -38,7 +38,7 @@ class Api {
         return fetch(`${this._baseUrl}/cards`, {
                 method: 'POST',
                 headers: this._headers,
-                authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
                 body: JSON.stringify({
                     name: newCard.name,
                     link: newCard.link,
