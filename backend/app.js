@@ -19,19 +19,29 @@ const { createUser, login } = require('./controllers/users');
 
 const app = express();
 
-const options = {
-  origin: [
-    'http://localhost:3001',
-    'https://zb.students.nomoredomains.club',
-    'https://api.zb.students.nomoredomains.club',
-  ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
-  credentials: true,
-};
-app.use('*', cors(options));
+// const options = {
+//   origin: [
+//     'http://localhost:3001',
+//     'https://zb.students.nomoredomains.club',
+//     'https://api.zb.students.nomoredomains.club',
+//   ],
+//   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+//   preflightContinue: false,
+//   optionsSuccessStatus: 204,
+//   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+//   credentials: true,
+// };
+// app.use('*', cors(options));
+
+const options = [
+  'http://localhost:3001',
+  'https://zb.students.nomoredomains.club',
+  'https://api.zb.students.nomoredomains.club',
+];
+
+app.use(cors({
+  origin: options,
+}));
 
 const { PORT = 3000 } = process.env;
 
