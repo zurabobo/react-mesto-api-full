@@ -38,7 +38,7 @@ class Api {
         return fetch(`${this._baseUrl}/cards`, {
                 method: 'POST',
                 headers: this._headers,
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${token}`,
                 body: JSON.stringify({
                     name: newCard.name,
                     link: newCard.link,
@@ -86,7 +86,7 @@ class Api {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
             body: JSON.stringify( {avatar: data.avatar} ),
         })
         .then(this._getResData);
