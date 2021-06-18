@@ -94,7 +94,7 @@ class Api {
     }
 
     getAppData(token) {
-        return Promise.all([this.getInitialCards(token), this.getUserInfo(handleCheckToken)]);
+        return Promise.all([this.getInitialCards(token), this.getUserInfo(token)]);
     }
 
     _getResData(res) {
