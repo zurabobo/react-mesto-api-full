@@ -33,26 +33,6 @@ const app = express();
 // };
 // app.use('*', cors(options));
 
-const options = [
-  'http://localhost:3001',
-  'https://zb.students.nomoredomains.club',
-  'https://api.zb.students.nomoredomains.club',
-];
-
-app.use(cors());
-
-app.use((req, res, next) => {
-  const { origin } = req.headers;
-
-  if (options.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-
-  next();
-});
-
-app.options('*', cors());
-
 const { PORT = 3000 } = process.env;
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
