@@ -109,7 +109,7 @@ class Api {
 const api = new Api({
     baseUrl: 'https://api.zb.students.nomoredomains.club',
     headers: {
-      authorization: '9da2e5f7-acdb-422d-9138-e514aeb3e40e',
+      'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
   });
