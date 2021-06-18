@@ -17,7 +17,7 @@ class Api {
         return fetch(`${this._baseUrl}/users/me`, {
                 method: 'PATCH',
                 headers: this._headers,
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${token}`,
                 body: JSON.stringify({
                     name: data.name,
                     about: data.about
