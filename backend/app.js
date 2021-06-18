@@ -31,12 +31,15 @@ const options = {
   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
   credentials: true,
 };
-app.use(cors({ 
-  origin: true, 
-  exposedHeaders: '*', 
-  credentials: true, 
-}));
+
 app.use('*', cors(options));
+
+app.use((req, res, next) => {  
+      res.header('Access-Control-Allow-Origin', "*");
+      res.header("Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE")
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
+ });
 
 // const allowedCors = [
 // 'https://zb.students.nomoredomains.club',
