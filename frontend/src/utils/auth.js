@@ -8,7 +8,6 @@ class Auth {
         return fetch(`${this._baseUrl}/signup`, {
             method: 'POST',
             headers: this._headers,
-            credentials: 'include',
             body: JSON.stringify({
                 password: data.password,
                 email: data.email
@@ -20,7 +19,6 @@ class Auth {
         return fetch(`${this._baseUrl}/signin`, {
             method: 'POST',
             headers: this._headers,
-            credentials: 'include',
             body: JSON.stringify({
                 password: data.password,
                 email: data.email
@@ -31,10 +29,9 @@ class Auth {
     checkToken(token) {
         return fetch(`${this._baseUrl}/users/me`, {
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
+                ...this._headers,
+                Authorization: `Bearer ${token}`
+            },
         }).then(this._getResData)
     }
 
