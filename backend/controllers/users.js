@@ -112,7 +112,7 @@ module.exports.updateAvatar = (req, res, next) => {
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
-
+  
   return User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign(
@@ -120,14 +120,30 @@ module.exports.login = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
         { expiresIn: '7d' },
       );
-      res.cookie('jwt', token, {
-        maxAge: 3600000 * 24 * 7,
-        httpOnly: true,
-        sameSite: true,
-      }).send({ token });
+
+      res.send({ token });
     })
     .catch((err) => {
       throw new NotAuthError(err.message);
     })
     .catch(next);
 };
+
+//   return User.findUserByCredentials(email, password)
+//     .then((user) => {
+//       const token = jwt.sign(
+//         { _id: user._id },
+//         NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
+//         { expiresIn: '7d' },
+//       );
+//       res.cookie('jwt', token, {
+//         maxAge: 3600000 * 24 * 7,
+//         httpOnly: true,
+//         sameSite: true,
+//       }).send({ token });
+//     })
+//     .catch((err) => {
+//       throw new NotAuthError(err.message);
+//     })
+//     .catch(next);
+// };

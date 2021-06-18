@@ -17,7 +17,6 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { createUser, login } = require('./controllers/users');
 
-const { PORT = 3000 } = process.env;
 const app = express();
 
 const options = {
@@ -33,6 +32,8 @@ const options = {
   credentials: true,
 };
 app.use('*', cors(options));
+
+const { PORT = 3000 } = process.env;
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
