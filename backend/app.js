@@ -33,16 +33,16 @@ const app = express();
 // };
 // app.use('*', cors(options));
 
-const allowedCors = [
-'https://zb.students.nomoredomains.club',
-'https://api.zb.students.nomoredomains.club',
-'http://localhost:3000',
-];
+// const allowedCors = [
+// 'https://zb.students.nomoredomains.club',
+// 'https://api.zb.students.nomoredomains.club',
+// 'http://localhost:3000',
+// ];
 
-app.use(cors({
-  origin: allowedCors,
-}));
-
+// app.use(cors({
+//   origin: allowedCors,
+// }));
+app.use(cors());
 const { PORT = 3000 } = process.env;
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
