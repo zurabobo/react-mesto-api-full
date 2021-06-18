@@ -34,9 +34,9 @@ const app = express();
 // app.use('*', cors(options));
 
 const allowedCors = [
-  'http://localhost:3001',
 'https://zb.students.nomoredomains.club',
 'https://api.zb.students.nomoredomains.club',
+'http://localhost:3000',
 ];
 
 app.use(cors({
