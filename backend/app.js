@@ -52,7 +52,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.options('*', cors());
+app.use('*', cors(allowedCors));
 
 // const allowedCors = [
 //   'https://zb.students.nomoredomains.club',
