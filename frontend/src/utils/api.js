@@ -5,7 +5,7 @@ class Api {
     }
 
 
-    getUserInfo() {
+    getUserInfo(token) {
         return fetch(`${this._baseUrl}/users/me`, {
                 headers: this._headers,
                 Authorization: `Bearer ${token}`
@@ -13,7 +13,7 @@ class Api {
             .then(this._getResData);
     }
 
-    setUserInfo(data) {
+    setUserInfo(data, token) {
         return fetch(`${this._baseUrl}/users/me`, {
                 method: 'PATCH',
                 headers: this._headers,
@@ -26,7 +26,7 @@ class Api {
             .then(this._getResData);
     }
 
-    getInitialCards() {
+    getInitialCards(token) {
         return fetch(`${this._baseUrl}/cards`, {
                 headers: this._headers,
                 Authorization: `Bearer ${token}`
@@ -34,7 +34,7 @@ class Api {
             .then(this._getResData);
     }
 
-    addCard(newCard) {
+    addCard(newCard, token) {
         return fetch(`${this._baseUrl}/cards`, {
                 method: 'POST',
                 headers: this._headers,
@@ -47,7 +47,7 @@ class Api {
             .then(this._getResData);
     }
 
-    deleteCard(id) {
+    deleteCard(id, token) {
         return fetch(`${this._baseUrl}/cards/${id}`, {
                 method: 'DELETE',
                 headers: this._headers,
@@ -64,7 +64,7 @@ class Api {
         }
       }
 
-    likeCard(id) {
+    likeCard(id, token) {
         return fetch(`${this._baseUrl}/cards/likes/${id}`, {
                 method: 'PUT',
                 headers: this._headers,
@@ -73,7 +73,7 @@ class Api {
             .then(this._getResData);
     }
 
-    dislikeCard(id) {
+    dislikeCard(id, token) {
         return fetch(`${this._baseUrl}/cards/likes/${id}`, {
                 method: 'DELETE',
                 headers: this._headers,
@@ -82,7 +82,7 @@ class Api {
             .then(this._getResData);
     }
 
-    setAvatar(data) {
+    setAvatar(data, token) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,
