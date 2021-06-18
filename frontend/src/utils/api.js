@@ -7,7 +7,8 @@ class Api {
 
     getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
-                headers: this._headers
+                headers: this._headers,
+                Authorization: `Bearer ${token}`
             })
             .then(this._getResData);
     }
@@ -16,6 +17,7 @@ class Api {
         return fetch(`${this._baseUrl}/users/me`, {
                 method: 'PATCH',
                 headers: this._headers,
+                Authorization: `Bearer ${token}`
                 body: JSON.stringify({
                     name: data.name,
                     about: data.about
@@ -27,6 +29,7 @@ class Api {
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
                 headers: this._headers,
+                Authorization: `Bearer ${token}`
             })
             .then(this._getResData);
     }
@@ -35,6 +38,7 @@ class Api {
         return fetch(`${this._baseUrl}/cards`, {
                 method: 'POST',
                 headers: this._headers,
+                Authorization: `Bearer ${token}`
                 body: JSON.stringify({
                     name: newCard.name,
                     link: newCard.link,
@@ -47,6 +51,7 @@ class Api {
         return fetch(`${this._baseUrl}/cards/${id}`, {
                 method: 'DELETE',
                 headers: this._headers,
+                Authorization: `Bearer ${token}`
             })
             .then(this._getResData);
     }
@@ -63,6 +68,7 @@ class Api {
         return fetch(`${this._baseUrl}/cards/likes/${id}`, {
                 method: 'PUT',
                 headers: this._headers,
+                Authorization: `Bearer ${token}`
             })
             .then(this._getResData);
     }
@@ -71,6 +77,7 @@ class Api {
         return fetch(`${this._baseUrl}/cards/likes/${id}`, {
                 method: 'DELETE',
                 headers: this._headers,
+                Authorization: `Bearer ${token}`
             })
             .then(this._getResData);
     }
@@ -79,14 +86,15 @@ class Api {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,
+            Authorization: `Bearer ${token}`
             body: JSON.stringify( {avatar: data.avatar} ),
         })
         .then(this._getResData);
 
     }
 
-    getAppData() {
-        return Promise.all([this.getInitialCards(), this.getUserInfo()]);
+    getAppData(token) {
+        return Promise.all([this.getInitialCards(token), this.getUserInfo(handleCheckToken)]);
     }
 
     _getResData(res) {
