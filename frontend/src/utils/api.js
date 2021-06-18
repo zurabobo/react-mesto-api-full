@@ -5,19 +5,21 @@ class Api {
     }
 
 
-    getUserInfo(token) {
+    getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
                 headers: this._headers,
-                Authorization: `Bearer ${token}`
+                credentials: 'include',
+                //Authorization: `Bearer ${token}`
             })
             .then(this._getResData);
     }
 
-    setUserInfo(data, token) {
+    setUserInfo(data) {
         return fetch(`${this._baseUrl}/users/me`, {
                 method: 'PATCH',
                 headers: this._headers,
-                Authorization: `Bearer ${token}`,
+                credentials: 'include',
+                //Authorization: `Bearer ${token}`,
                 body: JSON.stringify({
                     name: data.name,
                     about: data.about

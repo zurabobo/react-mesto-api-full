@@ -34,12 +34,6 @@ const options = {
 
 app.use('*', cors(options));
 
-app.use(function(req, res, next) {
-  //res.header("Access-Control-Allow-Origin", "https://api.zb.students.nomoredomains.club"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 // const allowedCors = [
 // 'https://zb.students.nomoredomains.club',
 // 'https://api.zb.students.nomoredomains.club',
