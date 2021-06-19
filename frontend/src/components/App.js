@@ -192,51 +192,51 @@ function App() {
     history.push('/sign-in');
   }
 
-  // const handleCheckToken = useCallback(
-  //   () => {
-  //     setIsLoading(true)
-  //     const token = localStorage.getItem('jwt');
-  //     auth.checkToken(token)
-  //       .then(
-  //         (res) => {
-  //           setUserEmail(res.email);
-  //           setLoggedIn(true);
-  //           history.push('/');
-  //         })
-  //       .catch((err) => { console.log(err) })
-  //       .finally(() => {
-  //         setIsLoading(false)
-  //       });
-  //   },
-  //   [history]
-  // );
-
-  
-
   const handleCheckToken = useCallback(
     () => {
       setIsLoading(true)
       const token = localStorage.getItem('jwt');
-
-      if (token) {
-        setToken(token);
-
-        auth.checkToken(token)
-          .then((res) => {
-            if (res) {
-              setLoggedIn(true);
-              setUserEmail(res.email);
-              history.push('/');
-            }
+      auth.checkToken(token)
+        .then(
+          (res) => {
+            setUserEmail(res.email);
+            setLoggedIn(true);
+            history.push('/');
           })
-          .catch((err) => { console.log(err) })
+        .catch((err) => { console.log(err) })
         .finally(() => {
           setIsLoading(false)
         });
-      }
     },
     [history]
   );
+
+  
+
+  // const handleCheckToken = useCallback(
+  //   () => {
+  //     setIsLoading(true)
+  //     const token = localStorage.getItem('jwt');
+
+  //     if (token) {
+  //       setToken(token);
+
+  //       auth.checkToken(token)
+  //         .then((res) => {
+  //           if (res) {
+  //             setLoggedIn(true);
+  //             setUserEmail(res.email);
+  //             history.push('/');
+  //           }
+  //         })
+  //         .catch((err) => { console.log(err) })
+  //       .finally(() => {
+  //         setIsLoading(false)
+  //       });
+  //     }
+  //   },
+  //   [history]
+  // );
 
   useEffect(() => {
     const token = localStorage.getItem('jwt');
