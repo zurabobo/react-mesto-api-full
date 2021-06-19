@@ -19,21 +19,21 @@ const { createUser, login } = require('./controllers/users');
 
 const app = express();
 
-const options = {
-  origin: [
-    'http://localhost:3001',
-    'https://zb.students.nomoredomains.club',
-    'https://api.zb.students.nomoredomains.club',
-  ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
-  credentials: true,
-};
-app.use(cors());
+// const options = {
+//   origin: [
+//     'http://localhost:3001',
+//     'https://zb.students.nomoredomains.club',
+//     'https://api.zb.students.nomoredomains.club',
+//   ],
+//   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+//   preflightContinue: false,
+//   optionsSuccessStatus: 204,
+//   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+//   credentials: true,
+// };
+// app.use(cors());
 
-app.use('*', cors(options));
+// app.use('*', cors(options));
 
 // const options = [
 //   'https://zb.students.nomoredomains.club',
@@ -55,15 +55,15 @@ app.use('*', cors(options));
 
 // app.use('*', cors(options));
 
-// const allowedCors = [
-//   'https://zb.students.nomoredomains.club',
-//   'https://api.zb.students.nomoredomains.club',
-//   'http://localhost:3001',
-// ];
+const allowedCors = [
+  'https://zb.students.nomoredomains.club',
+  'https://api.zb.students.nomoredomains.club',
+  'http://localhost:3001',
+];
 
-// app.use(cors({
-//   origin: allowedCors,
-// }));
+app.use(cors({
+  origin: allowedCors,
+}));
 
 const { PORT = 3000 } = process.env;
 
