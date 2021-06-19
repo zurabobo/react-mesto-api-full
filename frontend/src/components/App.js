@@ -83,10 +83,11 @@ function App() {
       .catch((err) => { console.log(err) })
   }, [])
 
+  const token = localStorage.getItem('jwt');
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
 
-    api.changeLikeCardStatus(card._id, isLiked)
+    api.changeLikeCardStatus(card._id, isLiked, token)
       .then(
         (newCard) => {
           setCards((cards) => cards.map((c) => c._id === card._id ? newCard : c))
@@ -96,7 +97,7 @@ function App() {
 
   function handleCardDelete(evt) {
     evt.preventDefault();
-    api.deleteCard(cardForDelete._id)
+    api.deleteCard(cardForDelete._id, token)
       .then(
         () => {
           setCards((cards) => cards.filter((elem) => elem._id !== cardForDelete._id));
@@ -143,7 +144,7 @@ function App() {
 
   function handleUpdateUser(data) {
     setIsLoading(true);
-    api.setUserInfo(data)
+    api.setUserInfo(data, token)
       .then(
         (data) => {
           setCurrentUser(data);
@@ -157,7 +158,7 @@ function App() {
 
   function handleUpdateAvatar(data) {
     setIsLoading(true);
-    api.setAvatar(data)
+    api.setAvatar(data, token)
       .then(
         (data) => {
           setCurrentUser(data);
@@ -171,7 +172,7 @@ function App() {
 
   function handleAddPlaceSubmit(data) {
     setIsLoading(true);
-    api.addCard(data)
+    api.addCard(data, token)
       .then(
         (newCard) => {
           setCards([newCard, ...cards]);
