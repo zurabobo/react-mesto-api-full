@@ -4,10 +4,13 @@ class Auth {
         this._headers = headers;
     }
 
-    register(data) {
+    register(data, token) {
         return fetch(`${this._baseUrl}/signup`, {
             method: 'POST',
-            headers: this._headers,
+            headers: {
+                ...this._headers,
+                Authorization: `Bearer ${token}`
+            },
             body: JSON.stringify({
                 password: data.password,
                 email: data.email
@@ -15,10 +18,13 @@ class Auth {
         }).then(this._getResData)
     }
 
-    authorize(data) {
+    authorize(data, token) {
         return fetch(`${this._baseUrl}/signin`, {
             method: 'POST',
-            headers: this._headers,
+            headers: {
+                ...this._headers,
+                Authorization: `Bearer ${token}`
+            },
             body: JSON.stringify({
                 password: data.password,
                 email: data.email

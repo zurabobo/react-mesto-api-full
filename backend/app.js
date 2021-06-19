@@ -96,7 +96,7 @@ app.post('/signup', celebrate({
     avatar: Joi.string().custom(urlValidation),
   }),
 }),
-  createUser);
+createUser);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
@@ -104,7 +104,7 @@ app.post('/signin', celebrate({
     password: Joi.string().required().min(8).max(30),
   }),
 }),
-  login);
+login);
 
 app.use('/', auth, cardsRouter);
 
