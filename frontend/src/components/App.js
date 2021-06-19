@@ -197,7 +197,7 @@ function App() {
       auth.checkToken(token)
         .then(
           (res) => {
-            setUserEmail(res.data.email);
+            setUserEmail(res.email);
             setLoggedIn(true);
             history.push('/');
           })
@@ -207,7 +207,7 @@ function App() {
         });
     },
     [history]
-  )
+  );
 
   useEffect(() => {
     const token = localStorage.getItem('jwt');
