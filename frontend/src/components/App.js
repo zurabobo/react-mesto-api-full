@@ -43,23 +43,30 @@ function App() {
 
   const [isSuccessSignUp, setIsSuccessSignUp] = useState(false);
 
+  const [token, setToken] = React.useState('');
+
   const history = useHistory();
 
   const handleCheckToken = useCallback(
     () => {
       setIsLoading(true)
       const token = localStorage.getItem('jwt');
+
+      if (token) {
+        setToken(token);
+
       auth.checkToken(token)
         .then(
           (res) => {
-            setUserEmail(res.email);
             setLoggedIn(true);
+            setUserEmail(res.email);
             history.push('/');
           })
         .catch((err) => { console.log(err) })
         .finally(() => {
           setIsLoading(false)
         });
+      }
     },
     [history]
   );
@@ -203,9 +210,10 @@ function App() {
   function handleAuthorization(data) {
     auth.authorize(data)
       .then((res) => {
-        setUserEmail(data.email);
         setLoggedIn(true);
+        setToken(res.token);
         localStorage.setItem('jwt', res.token);
+        setUserEmail(data.email);
         history.push('/')
       })
       .catch((err) => { console.log(err) })
@@ -214,6 +222,7 @@ function App() {
   function handleSingOut() {
     setLoggedIn(false);
     localStorage.removeItem('jwt');
+    setToken('');
     setUserEmail('');
     history.push('/sign-in');
   }
