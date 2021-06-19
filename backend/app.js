@@ -34,7 +34,7 @@ const app = express();
 
 // app.use('*', cors(options));
 
-const allowedCors = [
+const options = [
   'https://zb.students.nomoredomains.club',
   'https://api.zb.students.nomoredomains.club',
   'http://localhost:3000',
@@ -45,14 +45,14 @@ app.use(cors());
 app.use((req, res, next) => {
   const { origin } = req.headers;
 
-  if (allowedCors.includes(origin)) {
+  if (options.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
   }
 
   next();
 });
 
-app.use('*', cors(allowedCors));
+app.use('*', cors(options));
 
 // const allowedCors = [
 //   'https://zb.students.nomoredomains.club',
