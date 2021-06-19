@@ -72,7 +72,8 @@ function App() {
   }, [handleCheckToken])
 
   useEffect(() => {
-    api.getAppData()
+    const token = localStorage.getItem('jwt');
+    api.getAppData(token)
       .then(
         (data) => {
           const [cardsData, userData] = data;
