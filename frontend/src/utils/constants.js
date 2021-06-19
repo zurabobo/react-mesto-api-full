@@ -1,5 +1,5 @@
 export const baseUrl = 'https://api.zb.students.nomoredomains.club';
-export const token = '9da2e5f7-acdb-422d-9138-e514aeb3e40e';
+//export const token = '9da2e5f7-acdb-422d-9138-e514aeb3e40e';
 
 
 
