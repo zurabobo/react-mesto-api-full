@@ -90,7 +90,6 @@ function App() {
       .catch((err) => { console.log(err) })
   }, [])
 
-  const token = localStorage.getItem('jwt');
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
 
