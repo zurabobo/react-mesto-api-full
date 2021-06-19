@@ -55,14 +55,14 @@ const app = express();
 
 // app.use('*', cors(options));
 
-const allowedCors = [
+const options = [
   'https://zb.students.nomoredomains.club',
   'https://api.zb.students.nomoredomains.club',
   'http://localhost:3001',
 ];
 
 app.use(cors({
-  origin: allowedCors,
+  origin: options,
 }));
 
 const { PORT = 3000 } = process.env;

@@ -66,11 +66,11 @@ class Api {
             .then(this._getResData);
     }
 
-    changeLikeCardStatus(id, isLiked) {
+    changeLikeCardStatus(id, isLiked, token) {
         if (isLiked) {
-            return this.dislikeCard(id);
+            return this.dislikeCard(id, token);
         } else {
-            return this.likeCard(id);
+            return this.likeCard(id, token);
         }
     }
 
