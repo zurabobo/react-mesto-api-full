@@ -43,9 +43,33 @@ function App() {
 
   const [isSuccessSignUp, setIsSuccessSignUp] = useState(false);
 
-  const [token, setToken] = useState('');
-
   const history = useHistory();
+
+  const handleCheckToken = useCallback(
+    () => {
+      setIsLoading(true)
+      const token = localStorage.getItem('jwt');
+      auth.checkToken(token)
+        .then(
+          (res) => {
+            setUserEmail(res.email);
+            setLoggedIn(true);
+            history.push('/');
+          })
+        .catch((err) => { console.log(err) })
+        .finally(() => {
+          setIsLoading(false)
+        });
+    },
+    [history]
+  );
+
+  useEffect(() => {
+    const token = localStorage.getItem('jwt');
+    if (token) {
+      handleCheckToken();
+    }
+  }, [handleCheckToken])
 
   useEffect(() => {
     api.getAppData()
@@ -191,59 +215,6 @@ function App() {
     setUserEmail('');
     history.push('/sign-in');
   }
-
-  const handleCheckToken = useCallback(
-    () => {
-      setIsLoading(true)
-      const token = localStorage.getItem('jwt');
-      auth.checkToken(token)
-        .then(
-          (res) => {
-            setUserEmail(res.email);
-            setLoggedIn(true);
-            history.push('/');
-          })
-        .catch((err) => { console.log(err) })
-        .finally(() => {
-          setIsLoading(false)
-        });
-    },
-    [history]
-  );
-
-  
-
-  // const handleCheckToken = useCallback(
-  //   () => {
-  //     setIsLoading(true)
-  //     const token = localStorage.getItem('jwt');
-
-  //     if (token) {
-  //       setToken(token);
-
-  //       auth.checkToken(token)
-  //         .then((res) => {
-  //           if (res) {
-  //             setLoggedIn(true);
-  //             setUserEmail(res.email);
-  //             history.push('/');
-  //           }
-  //         })
-  //         .catch((err) => { console.log(err) })
-  //       .finally(() => {
-  //         setIsLoading(false)
-  //       });
-  //     }
-  //   },
-  //   [history]
-  // );
-
-  useEffect(() => {
-    const token = localStorage.getItem('jwt');
-    if (token) {
-      handleCheckToken();
-    }
-  }, [handleCheckToken])
 
   if (isLoading) {
     return (
