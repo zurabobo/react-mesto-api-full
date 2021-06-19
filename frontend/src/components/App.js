@@ -43,7 +43,7 @@ function App() {
 
   const [isSuccessSignUp, setIsSuccessSignUp] = useState(false);
 
-  const [token, setToken] = React.useState('');
+  const [token, setToken] = useState('');
 
   const history = useHistory();
 
