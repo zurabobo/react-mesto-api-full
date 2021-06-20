@@ -43,44 +43,10 @@ function App() {
 
   const [isSuccessSignUp, setIsSuccessSignUp] = useState(false);
 
-  const [token, setToken] = useState('');
-
   const history = useHistory();
 
-  const handleCheckToken = useCallback(
-    () => {
-      setIsLoading(true)
-      const token = localStorage.getItem('jwt');
-
-      if (token) {
-        setToken(token);
-
-      auth.checkToken(token)
-        .then(
-          (res) => {
-            setLoggedIn(true);
-            setUserEmail(res.email);
-            history.push('/');
-          })
-        .catch((err) => { console.log(err) })
-        .finally(() => {
-          setIsLoading(false)
-        });
-      }
-    },
-    [history]
-  );
-
   useEffect(() => {
-    const token = localStorage.getItem('jwt');
-    if (token) {
-      handleCheckToken();
-    }
-  }, [handleCheckToken])
-
-  useEffect(() => {
-    const token = localStorage.getItem('jwt');
-    api.getAppData(token)
+    api.getAppData()
       .then(
         (data) => {
           const [cardsData, userData] = data;
@@ -93,7 +59,7 @@ function App() {
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
 
-    api.changeLikeCardStatus(card._id, isLiked, token)
+    api.changeLikeCardStatus(card._id, isLiked)
       .then(
         (newCard) => {
           setCards((cards) => cards.map((c) => c._id === card._id ? newCard : c))
@@ -103,7 +69,7 @@ function App() {
 
   function handleCardDelete(evt) {
     evt.preventDefault();
-    api.deleteCard(cardForDelete._id, token)
+    api.deleteCard(cardForDelete._id)
       .then(
         () => {
           setCards((cards) => cards.filter((elem) => elem._id !== cardForDelete._id));
@@ -150,7 +116,7 @@ function App() {
 
   function handleUpdateUser(data) {
     setIsLoading(true);
-    api.setUserInfo(data, token)
+    api.setUserInfo(data)
       .then(
         (data) => {
           setCurrentUser(data);
@@ -164,7 +130,7 @@ function App() {
 
   function handleUpdateAvatar(data) {
     setIsLoading(true);
-    api.setAvatar(data, token)
+    api.setAvatar(data)
       .then(
         (data) => {
           setCurrentUser(data);
@@ -178,7 +144,7 @@ function App() {
 
   function handleAddPlaceSubmit(data) {
     setIsLoading(true);
-    api.addCard(data, token)
+    api.addCard(data)
       .then(
         (newCard) => {
           setCards([newCard, ...cards]);
@@ -209,10 +175,9 @@ function App() {
   function handleAuthorization(data) {
     auth.authorize(data)
       .then((res) => {
-        setLoggedIn(true);
-        setToken(res.token);
-        localStorage.setItem('jwt', res.token);
         setUserEmail(data.email);
+        setLoggedIn(true);
+        localStorage.setItem('jwt', res.token);
         history.push('/')
       })
       .catch((err) => { console.log(err) })
@@ -221,7 +186,6 @@ function App() {
   function handleSingOut() {
     setLoggedIn(false);
     localStorage.removeItem('jwt');
-    setToken('');
     setUserEmail('');
     history.push('/sign-in');
   }

@@ -45,7 +45,7 @@ class Api {
             method: 'POST',
             headers: {
                 ...this._headers,
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
                 name: newCard.name,
