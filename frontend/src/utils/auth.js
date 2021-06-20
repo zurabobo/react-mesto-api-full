@@ -15,13 +15,10 @@ class Auth {
         }).then(this._getResData)
     }
 
-    authorize(data, token) {
+    authorize(data) {
         return fetch(`${this._baseUrl}/signin`, {
             method: 'POST',
-            headers: {
-                ...this._headers,
-                Authorization: `Bearer ${token}`
-            },
+            headers: this._headers,
             body: JSON.stringify({
                 password: data.password,
                 email: data.email
