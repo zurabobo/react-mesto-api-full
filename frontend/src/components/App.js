@@ -78,18 +78,6 @@ function App() {
     }
   }, [handleCheckToken])
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem('jwt');
-  //   api.getAppData(token)
-  //     .then(
-  //       (data) => {
-  //         const [cardsData, userData] = data;
-  //         setCurrentUser(userData);
-  //         setCards(cardsData);
-  //       })
-  //     .catch((err) => { console.log(err) })
-  // }, [])
-
   useEffect(() => {
     if (loggedIn) {
       const token = localStorage.getItem('jwt');
@@ -236,7 +224,6 @@ function App() {
     setLoggedIn(false);
     localStorage.removeItem('jwt');
     setToken('');
-    // setUserEmail('');
     history.push('/sign-in');
   }
 
