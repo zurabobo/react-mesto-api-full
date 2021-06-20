@@ -94,8 +94,8 @@ function App() {
     if (loggedIn) {
       const token = localStorage.getItem('jwt');
       api.getAppData(token)
-        .then((res) => {
-          const [userData, cardsData] = res;
+        .then((data) => {
+          const [userData, cardsData] = data;
           setCurrentUser(userData);
           setCards(cardsData);
         })
