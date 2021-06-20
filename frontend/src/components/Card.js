@@ -8,20 +8,20 @@ function Card({ card, onCardClick, onCardDeleteConfirm, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
 
   const isOwn = card.owner === currentUser._id;
-  const cardDeleteButtonClassName = isOwn ?
-    'card__delete-button button-opacity card__delete-button_visible' : 'card__delete-button button-opacity card__delete-button_hidden';
+  // const cardDeleteButtonClassName = isOwn ?
+  //   'card__delete-button button-opacity card__delete-button_visible' : 'card__delete-button button-opacity card__delete-button_hidden';
+
+  // const isLiked = card.likes.some(i => i === currentUser._id);
+  // const cardLikeButtonClassName = isLiked ?
+  //   'card__like-button button-opacity card__like-button_active' : 'card__like-button button-opacity';
+  const cardDeleteButtonClassName = (
+    `card__delete-button button-opacity ${isOwn ? 'card__delete-button_visible' : 'card__delete-button_hidden'}`
+  );
 
   const isLiked = card.likes.some(i => i === currentUser._id);
-  const cardLikeButtonClassName = isLiked ?
-    'card__like-button button-opacity card__like-button_active' : 'card__like-button button-opacity';
-  // const cardDeleteButtonClassName = (
-  //   `card__delete-button button-opacity ${isOwn ? 'card__delete-button_visible' : 'card__delete-button_hidden'}`
-  // );
-
-  // const isLiked = card.likes.some(i => i._id === currentUser._id);
-  // const cardLikeButtonClassName = (
-  //   `card__like-button button-opacity ${isLiked ? 'card__like-button_active' : 'card__like-button button-opacity'}`
-  // );
+  const cardLikeButtonClassName = (
+    `card__like-button button-opacity ${isLiked ? 'card__like-button_active' : 'card__like-button button-opacity'}`
+  );
 
   function handleClick() {
     onCardClick(card);
