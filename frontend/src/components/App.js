@@ -90,25 +90,13 @@ function App() {
       .catch((err) => { console.log(err) })
   }, [])
 
-  // function handleCardLike(card) {
-  //   const isLiked = card.likes.some(i => i._id === currentUser._id);
-
-  //   api.changeLikeCardStatus(card._id, isLiked, token)
-  //     .then(
-  //       (newCard) => {
-  //         setCards((cards) => cards.map((c) => c._id === card._id ? newCard : c))
-  //       })
-  //     .catch((err) => { console.log(err) })
-  // };
-
-  function handleCardLike(card, isLiked) {
-    //const isLiked = card.likes.some(i => i._id === currentUser._id);
+  function handleCardLike(card) {
+    const isLiked = card.likes.some(i => i._id === currentUser._id);
 
     api.changeLikeCardStatus(card._id, isLiked, token)
       .then(
         (newCard) => {
-          const newCards = cards.map((currentCard) => currentCard._id === card._id ? newCard : currentCard)
-          setCards(newCards);
+          setCards((cards) => cards.map((c) => c._id === card._id ? newCard : c))
         })
       .catch((err) => { console.log(err) })
   };
@@ -222,8 +210,8 @@ function App() {
     auth.authorize(data)
       .then((res) => {
         setLoggedIn(true);
-        setToken(res.token);
         localStorage.setItem('jwt', res.token);
+        setToken(res.token);
         setUserEmail(data.email);
         history.push('/')
       })
