@@ -78,17 +78,30 @@ function App() {
     }
   }, [handleCheckToken])
 
+  // useEffect(() => {
+  //   const token = localStorage.getItem('jwt');
+  //   api.getAppData(token)
+  //     .then(
+  //       (data) => {
+  //         const [cardsData, userData] = data;
+  //         setCurrentUser(userData);
+  //         setCards(cardsData);
+  //       })
+  //     .catch((err) => { console.log(err) })
+  // }, [])
+
   useEffect(() => {
-    const token = localStorage.getItem('jwt');
-    api.getAppData(token)
-      .then(
-        (data) => {
-          const [cardsData, userData] = data;
+    if (loggedIn) {
+      const token = localStorage.getItem('jwt');
+      api.getAppData(token)
+        .then((res) => {
+          const [userData, cardsData] = res;
           setCurrentUser(userData);
           setCards(cardsData);
         })
-      .catch((err) => { console.log(err) })
-  }, [])
+        .catch((err) => {
+          console.log(err);
+  }, [loggedIn])
 
   function handleCardLike(card, isLiked) {
 
@@ -221,7 +234,6 @@ function App() {
     setLoggedIn(false);
     localStorage.removeItem('jwt');
     setToken('');
-    setUserEmail('');
     history.push('/sign-in');
   }
 
