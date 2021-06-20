@@ -101,6 +101,8 @@ function App() {
         })
         .catch((err) => {
           console.log(err);
+        })
+      }
   }, [loggedIn])
 
   function handleCardLike(card, isLiked) {
@@ -234,6 +236,7 @@ function App() {
     setLoggedIn(false);
     localStorage.removeItem('jwt');
     setToken('');
+    // setUserEmail('');
     history.push('/sign-in');
   }
 
