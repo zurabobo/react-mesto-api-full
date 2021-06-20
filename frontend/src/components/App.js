@@ -95,7 +95,7 @@ function App() {
       const token = localStorage.getItem('jwt');
       api.getAppData(token)
         .then((data) => {
-          const [userData, cardsData] = data;
+          const [cardsData, userData] = data;
           setCurrentUser(userData);
           setCards(cardsData);
         })
