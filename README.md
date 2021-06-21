@@ -3,4 +3,4 @@
 
 * публичный IP-адрес сервера: 178.154.253.26 
 * домен сервера: https://api.zb.students.nomoredomains.club 
-* фронтенда на сервере: https://zb.students.nomoredomains.club 
+* фронтенд на сервере: https://zb.students.nomoredomains.club 
