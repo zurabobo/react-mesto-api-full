@@ -34,26 +34,6 @@ const options = {
 
 app.use('*', cors(options));
 
-// const options = {
-//   origin: [
-//     'https://zb.students.nomoredomains.club',
-//     'https://api.zb.students.nomoredomains.club',
-//     'http://localhost:3001',
-//   ],
-// };
-
-// app.use('*', cors(options));
-
-// const options = [
-//   'https://zb.students.nomoredomains.club',
-//   'https://api.zb.students.nomoredomains.club',
-//   'http://localhost:3001',
-// ];
-
-// app.use(cors({
-//   origin: options,
-// }));
-
 const { PORT = 3000 } = process.env;
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
