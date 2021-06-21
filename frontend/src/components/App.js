@@ -230,7 +230,7 @@ function App() {
   if (isLoading) {
     return (
       <div className="spinner__container">
-      <Spinner className="spinner" color="white" size={150} />
+      <Spinner color="black" size={150} />
       </div>
     )
   } else {
