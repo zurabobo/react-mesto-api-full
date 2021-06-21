@@ -29,6 +29,8 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [isLoadingPage, setisLoadingPage] = useState(false);
+
   const [selectedCard, setSelectedCard] = useState(null);
 
   const [cardForDelete, setCardForDelete] = useState({})
@@ -231,7 +233,8 @@ function App() {
     history.push('/sign-in');
   }
 
-  if (isLoading) {
+  if (isLoadingPage) {
+    setisLoadingPage(true)
     return (
       <div className="spinner">
       <Spinner className="spinner__container" color="white" size={150} />
