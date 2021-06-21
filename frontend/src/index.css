@@ -6,6 +6,9 @@
 
 @import './blocks/button-opacity/button-opacity.css';
 
+@import './blocks/spinner/spinner.css';
+@import './blocks/spinner/__container/spinner__container.css';
+
 @import "./blocks/header/header.css";
 @import "./blocks/header/__logo/header__logo.css";
 @import "./blocks/header/__navlink/header__navlink.css";
