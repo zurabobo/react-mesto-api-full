@@ -26,11 +26,11 @@ class Auth {
         }).then(this._getResData);
     }
 
-    checkToken(token) {
+    checkToken() {
         return fetch(`${this._baseUrl}/users/me`, {
             headers: {
                 ...this._headers,
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${localStorage.getItem('jwt')}`
             },
         }).then(this._getResData)
     }
