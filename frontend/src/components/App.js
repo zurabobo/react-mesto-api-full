@@ -234,7 +234,7 @@ function App() {
   }
 
   if (isLoadingPage) {
-    setisLoadingPage(true)
+    //setisLoadingPage(true)
     return (
       <div className="spinner">
       <Spinner className="spinner__container" color="white" size={150} />
