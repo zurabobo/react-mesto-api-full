@@ -189,7 +189,7 @@ function App() {
     api.addCard(data, token)
       .then(
         (newCard) => {
-          setCards([newCard, ...cards]);
+          setCards({prepend: true}, [newCard, ...cards]);
           closeAllPopups();
         })
       .catch((err) => { console.log(err) })
