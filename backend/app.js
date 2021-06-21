@@ -35,35 +35,25 @@ const app = express();
 
 // app.use('*', cors(options));
 
+const options = {
+  origin: [
+    'https://zb.students.nomoredomains.club',
+    'https://api.zb.students.nomoredomains.club',
+    'http://localhost:3001',
+  ],
+};
+
+app.use('*', cors(options));
+
 // const options = [
 //   'https://zb.students.nomoredomains.club',
 //   'https://api.zb.students.nomoredomains.club',
-//   'http://localhost:3000',
+//   'http://localhost:3001',
 // ];
 
-// app.use(cors());
-
-// app.use((req, res, next) => {
-//   const { origin } = req.headers;
-
-//   if (options.includes(origin)) {
-//     res.header('Access-Control-Allow-Origin', origin);
-//   }
-
-//   next();
-// });
-
-// app.use('*', cors(options));
-
-const options = [
-  'https://zb.students.nomoredomains.club',
-  'https://api.zb.students.nomoredomains.club',
-  'http://localhost:3001',
-];
-
-app.use(cors({
-  origin: options,
-}));
+// app.use(cors({
+//   origin: options,
+// }));
 
 const { PORT = 3000 } = process.env;
 
@@ -97,7 +87,7 @@ app.post('/signup', celebrate({
     avatar: Joi.string().custom(urlValidation),
   }),
 }),
-createUser);
+  createUser);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
@@ -105,7 +95,7 @@ app.post('/signin', celebrate({
     password: Joi.string().required().min(8).max(30),
   }),
 }),
-login);
+  login);
 
 app.use('/', auth, cardsRouter);
 
