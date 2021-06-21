@@ -52,7 +52,7 @@ function App() {
   const handleCheckToken = useCallback(
     () => {
       setIsLoadingPage(true)
-      const token = localStorage.getItem('jwt');
+      //const token = localStorage.getItem('jwt');
 
       if (token) {
         setToken(token);
