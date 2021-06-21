@@ -190,7 +190,7 @@ function App() {
       .then(
         (newCard) => {
           setCards([newCard, ...cards]);
-          document.body.append(newCard);
+          cards.prepend(newCard);
           closeAllPopups();
         })
       .catch((err) => { console.log(err) })
