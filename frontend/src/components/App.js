@@ -49,7 +49,7 @@ function App() {
 
   const handleCheckToken = useCallback(
     () => {
-      setIsLoading(true)
+      // setIsLoading(true)
       const token = localStorage.getItem('jwt');
 
       if (token) {
@@ -63,9 +63,9 @@ function App() {
             history.push('/');
           })
         .catch((err) => { console.log(err) })
-        .finally(() => {
-          setIsLoading(false)
-        });
+        // .finally(() => {
+        //   setIsLoading(false)
+        // });
       }
     },
     [history]
@@ -80,6 +80,7 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
+      setIsLoading(true)
       const token = localStorage.getItem('jwt');
       api.getAppData(token)
         .then((data) => {
@@ -90,6 +91,9 @@ function App() {
         .catch((err) => {
           console.log(err);
         })
+        .finally(() => {
+          setIsLoading(false)
+        });
       }
   }, [loggedIn])
 
