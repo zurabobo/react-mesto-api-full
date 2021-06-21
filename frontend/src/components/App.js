@@ -52,12 +52,12 @@ function App() {
   const handleCheckToken = useCallback(
     () => {
       setIsLoadingPage(true)
-      //const token = localStorage.getItem('jwt');
+      const token = localStorage.getItem('jwt');
 
       if (token) {
         setToken(token);
 
-      auth.checkToken()
+      auth.checkToken(token)
         .then(
           (res) => {
             setLoggedIn(true);
@@ -83,8 +83,8 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       setIsLoading(true)
-      //const token = localStorage.getItem('jwt');
-      api.getAppData()
+      const token = localStorage.getItem('jwt');
+      api.getAppData(token)
         .then((data) => {
           const [cardsData, userData] = data;
           setCurrentUser(userData);
@@ -101,7 +101,7 @@ function App() {
 
   function handleCardLike(card, isLiked) {
 
-    api.changeLikeCardStatus(card._id, isLiked)
+    api.changeLikeCardStatus(card._id, isLiked, token)
       .then(
         (newCard) => {
           setCards((cards) => cards.map((c) => c._id === card._id ? newCard : c))
@@ -111,7 +111,7 @@ function App() {
 
   function handleCardDelete(evt) {
     evt.preventDefault();
-    api.deleteCard(cardForDelete._id)
+    api.deleteCard(cardForDelete._id, token)
       .then(
         () => {
           setCards((cards) => cards.filter((elem) => elem._id !== cardForDelete._id));
@@ -158,7 +158,7 @@ function App() {
 
   function handleUpdateUser(data) {
     setIsLoading(true);
-    api.setUserInfo(data)
+    api.setUserInfo(data, token)
       .then(
         (data) => {
           setCurrentUser(data);
@@ -172,7 +172,7 @@ function App() {
 
   function handleUpdateAvatar(data) {
     setIsLoading(true);
-    api.setAvatar(data)
+    api.setAvatar(data, token)
       .then(
         (data) => {
           setCurrentUser(data);
@@ -186,7 +186,7 @@ function App() {
 
   function handleAddPlaceSubmit(data) {
     setIsLoading(true);
-    api.addCard(data)
+    api.addCard(data, token)
       .then(
         (newCard) => {
           setCards([newCard, ...cards]);
