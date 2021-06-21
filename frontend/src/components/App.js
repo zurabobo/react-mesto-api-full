@@ -57,7 +57,7 @@ function App() {
       if (token) {
         setToken(token);
 
-      auth.checkToken(token)
+      auth.checkToken()
         .then(
           (res) => {
             setLoggedIn(true);
@@ -83,8 +83,8 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       setIsLoading(true)
-      const token = localStorage.getItem('jwt');
-      api.getAppData(token)
+      //const token = localStorage.getItem('jwt');
+      api.getAppData()
         .then((data) => {
           const [cardsData, userData] = data;
           setCurrentUser(userData);
@@ -101,7 +101,7 @@ function App() {
 
   function handleCardLike(card, isLiked) {
 
-    api.changeLikeCardStatus(card._id, isLiked, token)
+    api.changeLikeCardStatus(card._id, isLiked)
       .then(
         (newCard) => {
           setCards((cards) => cards.map((c) => c._id === card._id ? newCard : c))
@@ -111,7 +111,7 @@ function App() {
 
   function handleCardDelete(evt) {
     evt.preventDefault();
-    api.deleteCard(cardForDelete._id, token)
+    api.deleteCard(cardForDelete._id)
       .then(
         () => {
           setCards((cards) => cards.filter((elem) => elem._id !== cardForDelete._id));
@@ -158,7 +158,7 @@ function App() {
 
   function handleUpdateUser(data) {
     setIsLoading(true);
-    api.setUserInfo(data, token)
+    api.setUserInfo(data)
       .then(
         (data) => {
           setCurrentUser(data);
@@ -172,7 +172,7 @@ function App() {
 
   function handleUpdateAvatar(data) {
     setIsLoading(true);
-    api.setAvatar(data, token)
+    api.setAvatar(data)
       .then(
         (data) => {
           setCurrentUser(data);
@@ -186,10 +186,10 @@ function App() {
 
   function handleAddPlaceSubmit(data) {
     setIsLoading(true);
-    api.addCard(data, token)
+    api.addCard(data)
       .then(
         (newCard) => {
-          setCards([newCard, ...cards].reverse());
+          setCards([newCard, ...cards]);
           closeAllPopups();
         })
       .catch((err) => { console.log(err) })
