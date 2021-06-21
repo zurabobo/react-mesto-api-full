@@ -186,7 +186,7 @@ function App() {
 
   function handleAddPlaceSubmit(data) {
     setIsLoading(true);
-    api.addCard(data, token)
+    api.addCard(data)
       .then(
         (newCard) => {
           setCards([newCard, ...cards]);
