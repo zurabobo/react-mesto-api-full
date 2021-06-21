@@ -186,10 +186,11 @@ function App() {
 
   function handleAddPlaceSubmit(data) {
     setIsLoading(true);
-    api.addCard(data)
+    api.addCard(data, token)
       .then(
         (newCard) => {
-          setCards([newCard, ...cards]);
+          // setCards([newCard, ...cards]);
+          setCards(cards.prepend(newCard));
           closeAllPopups();
         })
       .catch((err) => { console.log(err) })
