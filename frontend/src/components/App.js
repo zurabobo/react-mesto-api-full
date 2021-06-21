@@ -29,6 +29,8 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [isLoadingPage, setIsLoadingPage] = useState(false);
+
   const [selectedCard, setSelectedCard] = useState(null);
 
   const [cardForDelete, setCardForDelete] = useState({})
@@ -49,7 +51,7 @@ function App() {
 
   const handleCheckToken = useCallback(
     () => {
-      // setIsLoading(true)
+      setIsLoadingPage(true)
       const token = localStorage.getItem('jwt');
 
       if (token) {
@@ -63,9 +65,9 @@ function App() {
             history.push('/');
           })
         .catch((err) => { console.log(err) })
-        // .finally(() => {
-        //   setIsLoading(false)
-        // });
+        .finally(() => {
+          setIsLoadingPage(false)
+        });
       }
     },
     [history]
@@ -80,6 +82,7 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
+      setIsLoading(true)
       const token = localStorage.getItem('jwt');
       api.getAppData(token)
         .then((data) => {
@@ -90,6 +93,9 @@ function App() {
         .catch((err) => {
           console.log(err);
         })
+        .finally(() => {
+          setIsLoading(false)
+        });
       }
   }, [loggedIn])
 
@@ -227,7 +233,7 @@ function App() {
     history.push('/sign-in');
   }
 
-  if (isLoading) {
+  if (isLoadingPage) {
     return (
       <div className="spinner">
       <Spinner className="spinner__container" color="white" size={150} />
