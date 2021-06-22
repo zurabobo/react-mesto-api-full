@@ -2,7 +2,9 @@ const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 const { urlValidation } = require('../middlewares/urlValidation');
 
-const { getCards, createCard, deleteCard, likeCard, dislikeCard } = require('../controllers/cards');
+const {
+  getCards, createCard, deleteCard, likeCard, dislikeCard,
+} = require('../controllers/cards');
 
 router.get('/cards', getCards);
 
