@@ -19,9 +19,10 @@
   "bugs": {
     "url": "https://github.com/zurabobo/express-mesto/issues"
   },
-  "homepage": "https://github.com/zurabobo/express-mesto#readme",
+  "homepage": "https://zurabobo.github.io/react-mesto-api-full",
   "devDependencies": {
     "eslint": "^7.26.0",
+    "gh-pages": "^3.2.3",
     "jest": "^27.0.4",
     "nodemon": "^2.0.7",
     "supertest": "^6.1.3"
