@@ -123,8 +123,7 @@ class Api {
 }
 
 const api = new Api({
-    // baseUrl: 'https://api.zb.students.nomoredomains.club',
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://api.zb.students.nomoredomains.club',
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'

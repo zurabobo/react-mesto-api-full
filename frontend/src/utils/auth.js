@@ -44,8 +44,7 @@ class Auth {
 }
 
 const auth = new Auth({
-    // baseUrl: 'https://api.zb.students.nomoredomains.club',
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://api.zb.students.nomoredomains.club',
     headers: {
         'Content-Type': 'application/json'
     }
