@@ -57,16 +57,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-// Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, './frontend/build')));
-// Anything that doesn't match the above, send back index.html
-app.get('*', (req, res) => {
-  // eslint-disable-next-line
-  res.sendFile(path.join(__dirname + '/./frontend/build', 'index.html'));
-});
+// // Serve static files from the React frontend app
+// app.use(express.static(path.join(__dirname, './frontend/build')));
+// // Anything that doesn't match the above, send back index.html
+// app.get('*', (req, res) => {
+//   // eslint-disable-next-line
+//   res.sendFile(path.join(__dirname + '/./frontend/build', 'index.html'));
+// });
 
-// const buildPath = path.join(__dirname, 'build');
-// app.use(express.static(buildPath));
+const buildPath = path.join(__dirname, 'build');
+app.use(express.static(buildPath));
 
 // app.use(express.static(path.join(__dirname, './frontend/build')));
 // app.get('*', (req, res) => {
