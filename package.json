@@ -12,7 +12,7 @@
     "start": "node app.js",
     "backend": "nodemon app.js",
     "dev": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run frontend\"",
-    "heroku-postbuild": "cd frontend && npm install && npm run build && npm run frontend",
+    "heroku-postbuild": "cd frontend && npm install && npm run build",
     "test": "jest",
     "lint": "npx eslint ."
   },
