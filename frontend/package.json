@@ -20,9 +20,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "npm run build && scp -r ./build/* z_bobokhidze@178.154.253.26:home/z_bobokhidze/react-mesto-api-full/frontend"
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -45,5 +44,5 @@
   "devDependencies": {
     "eslint": "^7.27.0"
   },
-  "proxy": "http://localhost:5000/"
+  "proxy": "http://localhost:5000"
 }
