@@ -57,11 +57,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-app.use(express.static(path.resolve(__dirname, './frontend/build')));
-app.get('*', (req, res) => {
-  // eslint-disable-next-line
-  res.sendFile(path.resolve(__dirname, './frontend/build', 'index.html'));
-});
+const buildPath = path.join(__dirname, 'build');
+app.use(express.static(buildPath));
+
+
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
