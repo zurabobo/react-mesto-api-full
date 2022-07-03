@@ -44,7 +44,7 @@ class Auth {
 }
 
 const auth = new Auth({
-    baseUrl: '',
+    baseUrl: 'http://localhost:5000',
     headers: {
         'Content-Type': 'application/json'
     }
