@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const { celebrate, Joi, errors } = require('celebrate');
 const helmet = require('helmet');
 const cors = require('cors');
+const path = require('path');
 
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
@@ -22,8 +23,13 @@ const app = express();
 const options = {
   origin: [
     'http://localhost:8080',
-    'https://zb.students.nomoredomains.club',
-    'https://api.zb.students.nomoredomains.club',
+    'http://localhost:3001',
+    'http://localhost:3002',
+    'http://localhost:3003',
+    'http://localhost:3004',
+    'http://localhost:3005',
+    // 'https://zb.students.nomoredomains.club',
+    // 'https://api.zb.students.nomoredomains.club',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
@@ -50,6 +56,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
+
+app.use(express.static(path.join(__dirname, './frontend/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/./frontend/build/index.html'))
+});
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
