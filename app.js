@@ -57,8 +57,25 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-const buildPath = path.join(__dirname, 'build');
-app.use(express.static(buildPath));
+app.use('/static', express.static(path.join(__dirname, './frontend/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join('./frontend/build/index.html'), (err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
+  });
+});
+
+// const buildPath = path.join(__dirname, 'build');
+// app.use(express.static(buildPath));
+
+// app.use(express.static(path.join(__dirname, './frontend/build')));
+// app.get('*', (req, res) => {
+//   // eslint-disable-next-line
+//   res.sendFile(path.join(__dirname + '/./frontend/build', 'index.html'));
+// });
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
