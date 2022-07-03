@@ -57,10 +57,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-app.use(express.static(path.join(__dirname, './frontend/build')));
+app.use(express.static(path.resolve(__dirname, './frontend/build')));
 app.get('*', (req, res) => {
   // eslint-disable-next-line
-  res.sendFile(path.join(__dirname + '/./frontend/build/index.html'));
+  res.sendFile(path.resolve(__dirname, './frontend/build', 'index.html'));
 });
 
 app.post('/signup', celebrate({
