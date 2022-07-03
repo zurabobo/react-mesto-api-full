@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "## Директории",
   "main": "app.js",
+  "engines": {
+    "node": "14.19.1",
+    "npm": "6.14.16"
+    },
   "scripts": {
     "frontend": "cd frontend && npm start",
     "start": "node app.js",
