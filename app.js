@@ -22,12 +22,7 @@ const app = express();
 
 const options = {
   origin: [
-    'http://localhost:8080',
-    'http://localhost:3001',
-    'http://localhost:3002',
-    'http://localhost:3003',
-    'http://localhost:3004',
-    'http://localhost:3005',
+    '',
     // 'https://zb.students.nomoredomains.club',
     // 'https://api.zb.students.nomoredomains.club',
   ],
@@ -59,8 +54,6 @@ app.use(requestLogger);
 
 const buildPath = path.join(__dirname, 'build');
 app.use(express.static(buildPath));
-
-
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
