@@ -40,7 +40,7 @@ const options = {
 
 app.use('*', cors(options));
 
-const { PORT = 3000 } = process.env;
+const { PORT = 5000 } = process.env;
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
@@ -59,7 +59,8 @@ app.use(requestLogger);
 
 app.use(express.static(path.join(__dirname, './frontend/build')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/./frontend/build/index.html`));
+  // eslint-disable-next-line
+  res.sendFile(path.join(__dirname + '/./frontend/build/index.html'));
 });
 
 app.post('/signup', celebrate({
