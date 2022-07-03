@@ -57,16 +57,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-app.use('/static', express.static(path.join(__dirname, './frontend/build')));
-
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, './frontend/build')));
+// Anything that doesn't match the above, send back index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join('./frontend/build/index.html'), (err) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send(err);
-    }
-  });
-});
+  // eslint-disable-next-line
+  res.sendFile(path.join(__dirname + './frontend/build/index.html'));
+})
 
 // const buildPath = path.join(__dirname, 'build');
 // app.use(express.static(buildPath));
