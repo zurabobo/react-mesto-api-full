@@ -40,7 +40,7 @@ const options = {
 
 app.use('*', cors(options));
 
-const { PORT = 5000 } = process.env;
+const PORT = process.env.PORT || 5000;
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
@@ -71,7 +71,7 @@ app.use(requestLogger);
 // app.use(express.static(path.join(__dirname, './frontend/build')));
 
 if (process.env.PORT) {
-  app.use(express.static('./frontend/build'));
+  app.use(express.static('frontend/build'));
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
   });
