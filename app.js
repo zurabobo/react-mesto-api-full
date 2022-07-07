@@ -70,7 +70,7 @@ app.use(requestLogger);
 
 // app.use(express.static(path.join(__dirname, './frontend/build')));
 
-if (process.env.NODE_ENV) {
+if (process.env.PORT) {
   app.use(express.static('./frontend/build'));
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
