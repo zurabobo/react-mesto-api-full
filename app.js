@@ -69,12 +69,13 @@ app.use(requestLogger);
 // const buildPath = path.join(__dirname, 'build');
 // app.use(express.static(buildPath));
 
-// app.use(express.static(path.join(__dirname, './frontend/build')));
+app.use(express.static(path.join(__dirname, 'frontend/build')));
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('frontend/build'));
+  app.use(express.static(path.join(__dirname, 'frontend/build')));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    // eslint-disable-next-line no-global-assign
+    res.sendFile(path.join(__dirname = 'frontend/build/index.html'));
   });
 }
 
@@ -129,7 +130,7 @@ app.use((err, req, res, next) => {
 
 app.get('*', (req, res) => {
   // eslint-disable-next-line
-  res.sendFile(path.join(__dirname + '/./frontend/build/index.html'));
+  res.sendFile(path.join(__dirname+'/frontend/public/index.html'));
 });
 
 app.listen(PORT, () => {
