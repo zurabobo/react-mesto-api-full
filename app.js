@@ -23,7 +23,7 @@ const app = express();
 const options = {
   origin: [
     'http://localhost:8080',
-    'http://localhost:3001',
+    'http://localhost:5000',
     'http://localhost:3002',
     'http://localhost:3003',
     'http://localhost:3004',
@@ -71,7 +71,7 @@ app.use(requestLogger);
 
 // app.use(express.static(path.join(__dirname, './frontend/build')));
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
