@@ -28,6 +28,7 @@ const options = {
     'http://localhost:3003',
     'http://localhost:3004',
     'http://localhost:3005',
+    'https://mestoapifull.herokuapp.com',
     // 'https://zb.students.nomoredomains.club',
     // 'https://api.zb.students.nomoredomains.club',
   ],
@@ -70,7 +71,7 @@ app.use(requestLogger);
 
 // app.use(express.static(path.join(__dirname, './frontend/build')));
 
-if (process.env.PORT) {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static('frontend/build'));
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
