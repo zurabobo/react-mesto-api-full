@@ -78,6 +78,10 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname = 'frontend/build/index.html'));
   });
 }
+app.get('*', (req, res) => {
+  // eslint-disable-next-line
+  res.sendFile(path.join(__dirname+'/frontend/build/index.html'));
+});
 
 // app.use(express.static(path.join(__dirname, './frontend/build')));
 // app.get('*', (req, res) => {
@@ -126,11 +130,6 @@ app.use((err, req, res, next) => {
         : message,
     });
   next();
-});
-
-app.get('*', (req, res) => {
-  // eslint-disable-next-line
-  res.sendFile(path.join(__dirname+'/frontend/public/index.html'));
 });
 
 app.listen(PORT, () => {
