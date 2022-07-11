@@ -69,8 +69,8 @@ app.use(requestLogger);
 // const buildPath = path.join(__dirname, 'build');
 // app.use(express.static(buildPath));
 
-
-app.use(express.static(path.join(__dirname + "public")))
+// eslint-disable-next-line
+app.use(express.static(path.join(__dirname + "public")));
 
 // app.use(express.static(path.join(__dirname, 'frontend/build')));
 
