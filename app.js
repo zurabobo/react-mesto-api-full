@@ -41,7 +41,7 @@ const options = {
 
 app.use('*', cors(options));
 
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
@@ -69,19 +69,22 @@ app.use(requestLogger);
 // const buildPath = path.join(__dirname, 'build');
 // app.use(express.static(buildPath));
 
-app.use(express.static(path.join(__dirname, 'frontend/build')));
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.resolve(__dirname, 'frontend/build')));
-  app.get('*', (req, res) => {
-    // eslint-disable-next-line no-global-assign
-    res.sendFile(path.resolve(__dirname = 'frontend/build/index.html'));
-  });
-}
-app.get('*', (req, res) => {
-  // eslint-disable-next-line
-  res.sendFile(path.resolve(__dirname+'/frontend/build/index.html'));
-});
+app.use(express.static(path.join(__dirname + "public")))
+
+// app.use(express.static(path.join(__dirname, 'frontend/build')));
+
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.resolve(__dirname, 'frontend/build')));
+//   app.get('*', (req, res) => {
+//     // eslint-disable-next-line no-global-assign
+//     res.sendFile(path.resolve(__dirname = 'frontend/build/index.html'));
+//   });
+// }
+// app.get('*', (req, res) => {
+//   // eslint-disable-next-line
+//   res.sendFile(path.resolve(__dirname+'/frontend/build/index.html'));
+// });
 
 // app.use(express.static(path.join(__dirname, './frontend/build')));
 // app.get('*', (req, res) => {
@@ -132,6 +135,6 @@ app.use((err, req, res, next) => {
   next();
 });
 
-app.listen(PORT, () => {
-  console.log('Ссылка на сервер');
+app.listen(port, () => {
+  console.log(`Ссылка на сервер: ${port}`);
 });
