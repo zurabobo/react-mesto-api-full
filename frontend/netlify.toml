@@ -1,0 +1,13 @@
+[build]
+  base = "frontend"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+from = "/*"
+to = "https://welbex-testtask.herokuapp.com/:splat"
+status = 200
