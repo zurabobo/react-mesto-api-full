@@ -1,5 +1,4 @@
 [build]
-  base = "frontend"
   command = "npm run build"
 
 [[redirects]]
@@ -9,5 +8,5 @@
 
 [[redirects]]
 from = "/*"
-to = "https://welbex-testtask.herokuapp.com/:splat"
+to = "https://moviesexplorer-api.herokuapp.com/:splat"
 status = 200
