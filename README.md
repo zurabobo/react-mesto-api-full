@@ -1,6 +1,6 @@
 # react-mesto-api-full
 Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположите в директории `backend/`, а фронтенд - в `frontend/`. 
 
-* публичный IP-адрес сервера: 178.154.253.26 
-* домен сервера: https://api.zb.students.nomoredomains.club 
-* фронтенд на сервере: https://zb.students.nomoredomains.club 
+# [Проектная работа на Netlify](https://react-mestoapi.netlify.app)
+# [Серверная часть на Heroku](https://react-mestoapi.herokuapp.com)
+
