@@ -44,7 +44,7 @@ class Auth {
 }
 
 const auth = new Auth({
-    baseUrl: 'http://localhost:5000',
+    baseUrl: 'https://react-mestoapi.herokuapp.com',
     headers: {
         'Content-Type': 'application/json'
     }
