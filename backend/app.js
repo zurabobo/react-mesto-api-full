@@ -161,8 +161,8 @@ const app = express();
 const options = {
   origin: [
     'http://localhost:8080',
-    'https://zb.students.nomoredomains.club',
-    'https://api.zb.students.nomoredomains.club',
+    'https://react-mestoapi.herokuapp.com',
+    'https://react-mestoapi.netlify.app',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
