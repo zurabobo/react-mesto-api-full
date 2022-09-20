@@ -175,12 +175,19 @@ app.use('*', cors(options));
 
 const { PORT = 3000 } = process.env;
 
-mongoose.connect('mongodb://localhost:27017/mestodb', {
-  useUnifiedTopology: true,
+// mongoose.connect('mongodb://localhost:27017/mestodb', {
+//   useUnifiedTopology: true,
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useFindAndModify: false,
+// });
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+})
+.then(() => console.log('MongoDB connected...'))
+.catch(err => console.log(err));
 
 app.use(helmet());
 app.use(cookieParser());
