@@ -1,5 +1,5 @@
 {
-  "name": "react-mesto-api-full",
+  "name": "backend",
   "version": "1.0.0",
   "description": "## Директории",
   "main": "app.js",
@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
