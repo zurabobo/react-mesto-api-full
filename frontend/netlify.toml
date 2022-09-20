@@ -8,5 +8,5 @@
 
 [[redirects]]
 from = "/*"
-to = "https://moviesexplorer-api.herokuapp.com/:splat"
+to = "https://react-mestoapi.herokuapp.com/:splat"
 status = 200
