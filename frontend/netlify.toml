@@ -8,5 +8,5 @@
 
 [[redirects]]
 from = "/*"
-to = "https://react-mestoapi.herokuapp.com/:splat"
+to = "https://react-mesto-ihrf.onrender.com/:splat"
 status = 200
