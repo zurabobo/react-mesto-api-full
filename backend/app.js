@@ -161,7 +161,7 @@ const app = express();
 const options = {
   origin: [
     'http://localhost:8080',
-    'https://react-mestoapi.herokuapp.com',
+    // 'https://react-mestoapi.herokuapp.com',
     'https://react-mestoapi.netlify.app',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
