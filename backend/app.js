@@ -181,7 +181,7 @@ const { PORT = 3000 } = process.env;
 //   useCreateIndex: true,
 //   useFindAndModify: false,
 // });
-mongoose.connect('mongodb://localhost:27017/mestodb', {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
