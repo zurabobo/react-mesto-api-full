@@ -44,7 +44,7 @@ class Auth {
 }
 
 const auth = new Auth({
-    baseUrl: 'https://react-mestoapi.herokuapp.com',
+    baseUrl: 'https://react-mesto-ihrf.onrender.com',
     headers: {
         'Content-Type': 'application/json'
     }

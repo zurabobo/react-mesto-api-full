@@ -123,7 +123,7 @@ class Api {
 }
 
 const api = new Api({
-    baseUrl: 'https://react-mestoapi.herokuapp.com',
+    baseUrl: 'https://react-mesto-ihrf.onrender.com',
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
