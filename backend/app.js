@@ -181,7 +181,7 @@ const { PORT = 3000 } = process.env;
 //   useCreateIndex: true,
 //   useFindAndModify: false,
 // });
-mongoose.connect('mongodb+srv://zuu_zuu:7zuramari7@cluster0.wk8853h.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
