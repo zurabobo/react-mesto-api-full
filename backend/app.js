@@ -172,6 +172,7 @@ const options = {
 };
 
 
+app.use('*', cors(options));
 
 const { PORT = 3000 } = process.env;
 
@@ -196,7 +197,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
-app.use('*', cors(options));
 app.post('/signup', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
