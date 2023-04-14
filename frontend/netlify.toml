@@ -1,1 +1,8 @@
-/*  https://react-mesto-ihrf.onrender.com/:splat  200
+[build]
+  command = "npm run build"
+
+
+[[redirects]]
+from = "/*"
+to = "https://react-mesto-ihrf.onrender.com/:splat"
+status = 200
