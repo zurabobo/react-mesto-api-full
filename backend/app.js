@@ -136,7 +136,6 @@
 //   console.log(`Ссылка на сервер: ${port}`);
 // });
 
-
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -171,7 +170,6 @@ const options = {
   credentials: true,
 };
 
-
 app.use('*', cors(options));
 
 const { PORT = 3000 } = process.env;
@@ -182,13 +180,14 @@ const { PORT = 3000 } = process.env;
 //   useCreateIndex: true,
 //   useFindAndModify: false,
 // });
-mongoose.connect(process.env.DB_URL, {
-  useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-})
-.then(() => console.log('MongoDB connected...'))
-.catch(err => console.log(err));
+mongoose
+  .connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
+  .then(() => console.log('MongoDB connected...'))
+  .catch((err) => console.log(err));
 
 app.use(helmet());
 app.use(cookieParser());
@@ -197,24 +196,32 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
-app.post('/signup', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required().pattern(new RegExp('^[A-Za-z0-9]{8,30}$')),
-    name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
-    avatar: Joi.string().custom(urlValidation),
+app.post(
+  '/signup',
+  celebrate({
+    body: Joi.object().keys({
+      email: Joi.string().required().email(),
+      password: Joi.string()
+        .required()
+        .pattern(new RegExp('^[A-Za-z0-9]{8,30}$')),
+      name: Joi.string().min(2).max(30),
+      about: Joi.string().min(2).max(30),
+      avatar: Joi.string().custom(urlValidation),
+    }),
   }),
-}),
-createUser);
+  createUser,
+);
 
-app.post('/signin', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required().min(8).max(30),
+app.post(
+  '/signin',
+  celebrate({
+    body: Joi.object().keys({
+      email: Joi.string().required().email(),
+      password: Joi.string().required().min(8).max(30),
+    }),
   }),
-}),
-login);
+  login,
+);
 
 app.use('/', auth, cardsRouter);
 
@@ -230,16 +237,12 @@ app.use(errors());
 
 app.use((err, req, res, next) => {
   const { statusCode = 500, message } = err;
-  res
-    .status(statusCode)
-    .send({
-      message: statusCode === 500
-        ? 'На сервере произошла ошибка'
-        : message,
-    });
+  res.status(statusCode).send({
+    message: statusCode === 500 ? 'На сервере произошла ошибка' : message,
+  });
   next();
 });
 
 app.listen(PORT, () => {
-  console.log('Ссылка на сервер');
+  console.log(`Ссылка на сервер ${PORT}`);
 });

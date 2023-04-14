@@ -45,6 +45,8 @@ class Auth {
 
 const auth = new Auth({
     baseUrl: 'https://react-mesto-ihrf.onrender.com',
+    // baseUrl: 'http://localhost:3000',
+
     headers: {
         'Content-Type': 'application/json'
     }
