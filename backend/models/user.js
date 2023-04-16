@@ -42,7 +42,7 @@ const userSchema = new mongoose.Schema({
       },
       message: 'Неправильный формат URL',
     },
-    default: 'https://www.dropbox.com/s/xaqh0rm5opleysz/avatar.jpeg',
+    default: 'https://www.dropbox.com/s/xaqh0rm5opleysz/avatar.jpeg?raw=1',
     required: false,
   },
 });
